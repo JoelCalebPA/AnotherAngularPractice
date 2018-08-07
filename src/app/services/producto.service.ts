@@ -10,13 +10,14 @@ import { Configuration } from '../app.constants';
 export class ProductoService {
 
   private actionUrl: string;
+  target: string;
 
-  constructor(private http: HttpClient, private _configuration: Configuration) {
-    this.actionUrl = _configuration.ServerWithApiUrl + 'productos';
+  constructor(private http: HttpClient, private _configuration: Configuration, ) {
+    this.actionUrl = _configuration.ServerWithApiUrl;
   }
 
   public getAll<T>(): Observable<T> {
-    return this.http.get<T>(this.actionUrl);
+    return this.http.get<T>(this.actionUrl + this.target);
   }
 
 }

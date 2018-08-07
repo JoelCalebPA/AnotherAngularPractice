@@ -5,11 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
-import { MatButtonModule } from '@angular/material';
-import { MatTableModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { ListaProductosComponent } from './components/lista-productos/lista-productos.component';
-import { ToasterModule } from 'angular2-toaster';
-import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,10 +18,10 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ToasterModule.forRoot(),
-    SlimLoadingBarModule,
+    BrowserAnimationsModule,
     MatButtonModule,
-    MatTableModule
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

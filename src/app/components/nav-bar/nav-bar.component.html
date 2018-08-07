@@ -1,3 +1,7 @@
-<p>
-  <button mat-button>{{title}}</button>
-</p>
+<mat-toolbar>
+  <span>Galaxy</span>
+  <button mat-button [matMenuTriggerFor]="menu">Marcas</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let m of marcas">{{ m.nombre }}</button>
+  </mat-menu>
+</mat-toolbar>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from '../../services/producto.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,25 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  title = 'Hello form Navbar';
+  public marcas: any[];
 
-  HEROES: string[] = [
-    'Mr. Nice',
-    'Narco',
-    'Bombasto',
-    'Celeritas',
-    'Magneta',
-    'RubberMan',
-    'Dynama',
-    'Dr IQ',
-    'Magma',
-    'Tornado'];
-
-    header = 'Nombre';
-
-  constructor() { }
+  constructor(private _productoService: ProductoService) {
+    _productoService.target = 'marca';
+  }
 
   ngOnInit() {
+    this._productoService
+      .getAll<any[]>()
+      .subscribe((data: any[]) => this.marcas = data);
   }
 
 }

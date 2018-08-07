@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
-import { ToasterService } from 'angular2-toaster';
-import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-lista-productos',
@@ -10,24 +8,16 @@ import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 })
 export class ListaProductosComponent implements OnInit {
 
-  public values: any[];
+  public productos: any[];
 
-  constructor(private _productoService: ProductoService,
-    private _toasterService: ToasterService,
-    private _slimLoadingBarService: SlimLoadingBarService) { }
+  constructor(private _productoService: ProductoService) {
+    _productoService.target = 'productos';
+  }
 
   ngOnInit() {
-    this._slimLoadingBarService.start();
-
     this._productoService
       .getAll<any[]>()
-      .subscribe((data: any[]) => this.values = data,
-        error => () => { this._toasterService.pop('error', 'Damn', 'Something went wrong...'); },
-        () => {
-          this._toasterService.pop('success', 'Complete', 'Getting all values complete');
-          this._slimLoadingBarService.complete();
-        });
-
+      .subscribe((data: any[]) => this.productos = data);
   }
 
 }
