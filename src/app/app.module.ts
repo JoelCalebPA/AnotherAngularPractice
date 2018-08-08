@@ -5,15 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
-import { MatButtonModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatToolbarModule, MatCardModule, MatGridListModule } from '@angular/material';
 import { ListaProductosComponent } from './components/lista-productos/lista-productos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    ListaProductosComponent
+    ListaProductosComponent,
+    CatalogoComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatButtonModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

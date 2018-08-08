@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService } from '../../services/producto.service';
+import { Marca } from '../../entities/marca';
+import { MarcaService } from '../../services/marca.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,16 +9,14 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class NavBarComponent implements OnInit {
 
-  public marcas: any[];
+  public marcas: Marca[];
 
-  constructor(private _productoService: ProductoService) {
-    _productoService.target = 'marca';
-  }
+  constructor(private _marcaService: MarcaService) { }
 
   ngOnInit() {
-    this._productoService
-      .getAll<any[]>()
-      .subscribe((data: any[]) => this.marcas = data);
+    this._marcaService
+      .getAll<Marca[]>()
+      .subscribe((data: Marca[]) => this.marcas = data);
   }
 
 }
